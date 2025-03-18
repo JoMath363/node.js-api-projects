@@ -1,7 +1,7 @@
 {
   "name": "contacts-api",
   "version": "1.0.0",
-  "description": "a simple crud aplication",
+  "description": "A basic CRUD aplication using MongoDB.",
   "keywords": [
     "api",
     "nodejs",
@@ -13,7 +13,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
