@@ -15,7 +15,7 @@ This repository contains various projects created to study API development using
 ## How to Run
 1. Clone the repository:
    ```sh
-   git clone https://github.com/JoseMathias/repository-name.git
+   git clone https://github.com/JoseMathias/node.js-api-projects.git
    ```
 2. Navigate to the desired directory:
    ```sh
@@ -31,5 +31,9 @@ This repository contains various projects created to study API development using
    npm start
    ```
 
+---
+
 **Author:** JoseMathias
+
+
 
