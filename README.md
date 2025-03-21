@@ -7,7 +7,7 @@ This repository contains various projects created to study API development using
 - Express.js
 - MongoDB / PostgreSQL (depending on the project)
 - JWT for authentication
-- Jest / Mocha for testing
+- Jest for testing
 
 ## Included Projects
 1. **Contacts API** - CRUD; MongoDB and Mongoose; Error handling.

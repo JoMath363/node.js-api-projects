@@ -1,6 +1,6 @@
 {
   "development": {
-    "dialect": "sequelize",
+    "dialect": "sqlite",
     "storage": "./database.sqlite"
   },
   "test": {
