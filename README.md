@@ -1,6 +1,6 @@
 # Node.js API Projects
 
-This repository contains various projects created to study API development using Node.js.
+This repository contains various projects created to study API development using Node.js. Each project explores different tools and features of API development.
 
 ## Technologies Used
 - Node.js
@@ -11,10 +11,16 @@ This repository contains various projects created to study API development using
 
 ## Included Projects
 1. **Contacts API**  
-   - Create, read, update, and delete (CRUD) contacts
    - Uses MongoDB with Mongoose  
+   - Manages contacts with CRUD operations
    - Handles errors with custom middleware  
    - Supports pagination and filtering 
+
+2. **Courses API**
+   - Uses SQLite with Sequelize ORM  
+   - Manages courses with CRUD operations  
+   - Structured using the MVC pattern
+   - Implements relational data (e.g., courses and registrations)  
 
 ## How to Run
 1. Clone the repository:

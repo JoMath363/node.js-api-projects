@@ -1,21 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import contactRoute from "./routes/contactRoute.js";
-import handleErrors from "./middlewares/handleErrors.js";
-import handle404 from "./middlewares/handle404.js";
+import contactRoute from "./src/routes/contactRoute.js";
+import handleErrors from "./src/middlewares/handleErrors.js";
+import handle404 from "./src/middlewares/handle404.js";
 
 const app = express();
 app.use(express.json());
 dotenv.config();
 
 const mongoDBURL = process.env.DB_URL;
-const port = 5555;
+const port = 3000;
 
 //Routes
 app.use("/contact", contactRoute);
 app.use(handle404);
-
 app.use(handleErrors);
 
 mongoose
