@@ -19,8 +19,10 @@ This repository contains various projects created to study API development using
 2. **Courses API**
    - Uses SQLite with Sequelize ORM  
    - Manages courses with CRUD operations  
-   - Structured using the MVC pattern
-   - Implements relational data (e.g., courses and registrations)  
+   - Structured using the MVC pattern  
+   - Implements soft delete with Sequelize's `paranoid` mode  
+   - Defines scopes for query filtering
+   - Enforces validation on models  
 
 ## How to Run
 1. Clone the repository:

@@ -1,16 +1,20 @@
-const dataSource = require("../models");
+const dataSource = require("../database/models");
 
 class Service {
   constructor(modelName) {
     this.model = modelName;
   }
 
-  async getAllRegisters() {
+  async getRegisters() {
     return dataSource[this.model].findAll();
   }
 
-  async getOneRegisterById(id) {
+  async getRegisterById(id) {
     return dataSource[this.model].findByPk(id);
+  }
+
+  async getRegistersByScope(scopeName) {
+    return dataSource[this.model].scope(scopeName).findAll(); 
   }
 
   async createRegister(registerData) {

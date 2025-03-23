@@ -13,8 +13,8 @@ class PeopleController extends Controller {
       const studentId = Number(req.params.id);
       const registrationsList = await peopleService.getRegistrationsByStudent(studentId);
       return res.status(200).json(registrationsList);
-    } catch (erro) {
-      // erro
+    } catch (error) {
+      return res.status(500).json({error: error.message});
     }
   }
 }

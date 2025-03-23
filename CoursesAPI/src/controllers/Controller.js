@@ -3,22 +3,32 @@ class Controller {
     this.service = service;
   }
  
-  async getAll(req, res) {
+  async getDefault(req, res) {
     try {
-      const registerList = await this.service.getAllRegisters();
+      const registerList = await this.service.getRegisters();
       return res.status(200).json(registerList);
-    } catch (erro) {
-      // erro
+    } catch (error) {
+      return res.status(500).json({error: error.message});
     }
   }
  
-  async getOneById(req, res) {
+  async getById(req, res) {
     const { id } = req.params;
     try {
-      const register = await this.service.getOneRegisterById(Number(id));
+      const register = await this.service.getRegisterById(Number(id));
       return res.status(200).json(register);
-    } catch (erro) {
-      // erro
+    } catch (error) {
+      return res.status(500).json({error: error.message});
+    }
+  }
+
+  async getByScope(req, res) {
+    const scope = req.params.scope;
+    try {
+      const registersList = await this.service.getRegistersByScope(scope);
+      return res.status(200).json(registersList);
+    } catch (error) {
+      return res.status(500).json({error: error.message});
     }
   }
  
@@ -27,8 +37,8 @@ class Controller {
     try {
       const newCreatedRegister = await this.service.createRegister(dataForCreation);
       return res.status(200).json(newCreatedRegister);
-    } catch (erro) {
-      // erro
+    } catch (error) {
+      return res.status(500).json({error: error.message});
     }
   }
  
@@ -41,8 +51,8 @@ class Controller {
         return res.status(400).json({ mensagem: "Register was not updated." });
       }
       return res.status(200).json({ mensagem: "Updated with sucess!" });
-    } catch (erro) {
-      // erro
+    } catch (error) {
+      return res.status(500).json({error: error.message});
     }
   }
  
@@ -53,7 +63,7 @@ class Controller {
       return res.status(200).json({ mensagem: `id ${id} deleted.` });
  
     } catch (error) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({error: error.message});
     }
   }
 }
