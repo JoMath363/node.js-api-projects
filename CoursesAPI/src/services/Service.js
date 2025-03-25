@@ -5,16 +5,16 @@ class Service {
     this.model = modelName;
   }
 
-  async getRegisters() {
+  async getRegisters(scope) {
+    if (scope) {
+      return dataSource[this.model].scope(scope).findAll();
+    }
+
     return dataSource[this.model].findAll();
   }
 
   async getRegisterById(id) {
     return dataSource[this.model].findByPk(id);
-  }
-
-  async getRegistersByScope(scopeName) {
-    return dataSource[this.model].scope(scopeName).findAll(); 
   }
 
   async createRegister(registerData) {

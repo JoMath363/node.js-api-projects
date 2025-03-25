@@ -3,9 +3,10 @@ class Controller {
     this.service = service;
   }
  
-  async getDefault(req, res) {
+  async getScope(req, res) {
     try {
-      const registerList = await this.service.getRegisters();
+      const { scope } = req.params;
+      const registerList = await this.service.getRegisters(scope);
       return res.status(200).json(registerList);
     } catch (error) {
       return res.status(500).json({error: error.message});
@@ -17,16 +18,6 @@ class Controller {
     try {
       const register = await this.service.getRegisterById(Number(id));
       return res.status(200).json(register);
-    } catch (error) {
-      return res.status(500).json({error: error.message});
-    }
-  }
-
-  async getByScope(req, res) {
-    const scope = req.params.scope;
-    try {
-      const registersList = await this.service.getRegistersByScope(scope);
-      return res.status(200).json(registersList);
     } catch (error) {
       return res.status(500).json({error: error.message});
     }

@@ -37,7 +37,7 @@ This repository contains various projects created to study API development using
    ```sh
    npm install
    ```
-4. Configure the environment variables (.env) as per the project's README.
+4. Depending on the project, configure the environment variables (.env) using the available template.
 5. Start the server:
    ```sh
    npm start
