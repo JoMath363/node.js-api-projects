@@ -7,7 +7,7 @@ const router = Router();
 const peopleController = new PeopleController();
 const registrationController = new RegistrationController();
 
-router.get("/people/:scope?", (req, res) => peopleController.getScope(req, res));
+router.get("/people/:scope?", (req, res) => peopleController.getByScope(req, res));
 router.get("/people/id/:id", (req, res) => peopleController.getById(req, res));
 router.post("/people", (req, res) => peopleController.createNew(req, res));
 router.put("/people/:id", (req, res) => peopleController.update(req, res));

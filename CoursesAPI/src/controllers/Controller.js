@@ -3,7 +3,7 @@ class Controller {
     this.service = service;
   }
  
-  async getScope(req, res) {
+  async getByScope(req, res) {
     try {
       const { scope } = req.params;
       const registerList = await this.service.getRegisters(scope);

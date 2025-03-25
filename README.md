@@ -20,9 +20,12 @@ This repository contains various projects created to study API development using
    - Uses SQLite with Sequelize ORM  
    - Manages courses with CRUD operations  
    - Structured using the MVC pattern  
-   - Implements Soft Delete
-   - Defines scopes for query filtering
-   - Enforces validation on models  
+   - Utilizes advanced Sequelize features such as:
+      - Model scopes
+      - Soft delete
+      - Validations
+      - Associations
+      - Custom query methods
 
 ## How to Run
 1. Clone the repository:
