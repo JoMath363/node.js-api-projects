@@ -1,0 +1,11 @@
+import express from "express";
+import userRoutes from "./userRoutes.js";
+import postRoutes from "./postRoutes.js";
+
+const setRoutes = (app) => {
+  app.use(express.json());
+  app.use(userRoutes);
+  app.use(postRoutes);
+};
+
+export default setRoutes;
