@@ -10,13 +10,14 @@ const commentSchema = new mongoose.Schema({
   },
   post: {
     type: mongoose.Schema.Types.ObjectId, 
+    required: [true, "Post field is required"],
     ref: "posts",
-    required: [true, "Post field is required"]
   }
 },
 {
   timestamps: true
 });
+
 
 const commentModel = mongoose.model("comments", commentSchema);
 export default commentModel;
