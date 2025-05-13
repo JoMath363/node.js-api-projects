@@ -27,6 +27,11 @@ This repository contains various projects created to study API development using
       - Associations
       - Custom query methods
 
+3. **Posts API**
+   - Designed to practice MongoDB and Mongoose skills
+
+
+
 ## How to Run
 1. Clone the repository:
    ```sh
@@ -40,7 +45,15 @@ This repository contains various projects created to study API development using
    ```sh
    npm install
    ```
-4. Depending on the project, configure the environment variables (.env) using the available template.
+4. Depending on the project, configure the environment variables (.env) using the available template:
+   - Rename .env.example to .env.
+   - Open .env and update the required values:
+   ```sh
+   MONGO_URI=mongodb+srv://your_username:your_password@cluster.mongodb.net/database_name
+   PORT=3000
+   JWT_SECRET=your_secret_key
+   ```
+   - Save the file.
 5. Start the server:
    ```sh
    npm start
