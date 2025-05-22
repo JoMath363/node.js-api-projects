@@ -2,35 +2,24 @@
 
 This repository contains various projects created to study API development using Node.js. Each project explores different tools and features of API development.
 
-## Technologies Used
-- Node.js
-- Express.js
-- MongoDB / SQLite (depending on the project)
-- JWT for authentication
-- Jest for testing
-
 ## Included Projects
 1. **Contacts API**  
-   - Uses MongoDB with Mongoose  
-   - Manages contacts with CRUD operations
-   - Handles errors with custom middleware  
-   - Supports pagination and filtering 
+   - MongoDB
+   - Mongoose  
+   - CRUD
+   - Error Handling
+   - Custom Middlewares  
+   - Pagination and filtering 
 
 2. **Courses API**
-   - Uses SQLite with Sequelize ORM  
-   - Manages courses with CRUD operations  
-   - Structured using the MVC pattern  
-   - Utilizes advanced Sequelize features such as:
-      - Model scopes
-      - Soft delete
-      - Validations
-      - Associations
-      - Custom query methods
-
-3. **Posts API**
-   - Designed to practice MongoDB and Mongoose skills
-
-
+   - SQLite
+   - Sequelize ORM  
+   - MVC Pattern  
+   - Model Scopes
+   - Soft Delete
+   - Validations
+   - Associations
+   - Custom Query Methods
 
 ## How to Run
 1. Clone the repository:
