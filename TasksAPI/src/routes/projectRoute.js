@@ -5,10 +5,10 @@ const projectRoute = express.Router();
 
 projectRoute.post("/project", ProjectController.createProject)
   .get("/project", ProjectController.getAllProjects)
-  .get("/project/:id", ProjectController.getProjectById)
-  .get("project/:id/tasks", ProjectController.getProjectTasks)
   .get("project/empty", ProjectController.getEmptyProjects)
   .get("project/recent", ProjectController.getRecentProjects)
+  .get("/project/:id", ProjectController.getProjectById)
+  .get("project/:id/tasks", ProjectController.getProjectTasks)
   .put("/project/:id", ProjectController.updateProjectById)
   .delete("/project/:id", ProjectController.deleteProjectById)
   .delete("/project/:id/tasks", ProjectController.deleteProjectById);

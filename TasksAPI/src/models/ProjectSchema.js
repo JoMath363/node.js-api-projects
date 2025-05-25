@@ -30,7 +30,10 @@ class ProjectSchema {
   static async getEmpty() {
     return await pool.query(
       `
-      
+      SELECT p.*
+      FROM projects p
+      LEFT JOIN tasks t ON p.id = t.project_id
+      WHERE t.id IS NULL
       `
     );
   }
@@ -38,17 +41,11 @@ class ProjectSchema {
   static async getRecent() {
     return await pool.query(
       `
-      
+      SELECT *
+      FROM projects
+      ORDER BY created_at DESC
+      LIMIT 5
       `
-    );
-  }
-
-  static async getTasks({ id }) {
-    return await pool.query(
-      `
-      
-      `,
-      [id]
     );
   }
 
@@ -56,7 +53,18 @@ class ProjectSchema {
     return await pool.query(
       `
       SELECT * FROM projects 
-      WHERE id = $1
+      WHERE id = $1;
+      `,
+      [id]
+    );
+  }
+
+  static async getTasks({ id }) {
+    return await pool.query(
+      `
+      SELECT *
+      FROM tasks
+      WHERE project_id = $1
       `,
       [id]
     );
@@ -68,7 +76,9 @@ class ProjectSchema {
       UPDATE projects 
       SET name = $1, 
           description = $2 
-      WHERE id = $3 RETURNING *`,
+      WHERE id = $3 
+      RETURNING *
+      `,
       [name, description, id]
     );
 

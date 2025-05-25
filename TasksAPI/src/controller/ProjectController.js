@@ -79,7 +79,7 @@ class ProjectController {
     try {
       const { id } = req.params;
 
-      const result = await ProjectSchema.getById({ id });
+      const result = await ProjectSchema.getTasks({ id });
 
       res.status(200).send({
         message: "Tasks fetched with sucess.", 
