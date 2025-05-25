@@ -3,20 +3,21 @@ import ProjectSchema from "../models/ProjectSchema.js";
 class ProjectController {
   static async createProject(req, res) {
     try {
-      const { name, description } = req.body;
-
-      if (!name || !description) {
+      if (
+        !req.body.name ||
+        !req.body.description
+      ) {
         return res.status(400).send("Name and description are required.");
       }
 
-      const result = await ProjectSchema.create({ name, description });
+      const result = await ProjectSchema.create(req.body);
 
-      res.status(201).send({
+      res.status(200).send({
         message: "New project created.", 
         data: result
       });
     } catch (error) {
-      res.status(500).send("Internal server error: " + error.message);
+      res.status(500).send(`Internal server error: ${error.message}`);
     }
   }
 
@@ -33,13 +34,35 @@ class ProjectController {
     }
   }
 
+  static async getEmptyProjects(req, res) {
+    try {
+      const result = await ProjectSchema.getEmpty();
+
+      res.status(200).send({
+        message: "Projects fetched with sucess.", 
+        data: result
+      });
+    } catch (error) {
+      res.status(500).send(`Internal server error: ${error.message}`);
+    }
+  }
+
+  static async getRecentProjects(req, res) {
+    try {
+      const result = await ProjectSchema.getRecent();
+
+      res.status(200).send({
+        message: "Projects fetched with sucess.", 
+        data: result
+      });
+    } catch (error) {
+      res.status(500).send(`Internal server error: ${error.message}`);
+    }
+  }
+
   static async getProjectById(req, res) {
     try {
       const { id } = req.params;
-
-      if (!id) {
-        return res.status(400).send("Id is required.");
-      }
 
       const result = await ProjectSchema.getById({ id });
 
@@ -48,27 +71,44 @@ class ProjectController {
         data: result
       });
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).send(`Internal server error: ${error.message}`);
+    }
+  }
+
+  static async getProjectTasks(req, res) {
+    try {
+      const { id } = req.params;
+
+      const result = await ProjectSchema.getById({ id });
+
+      res.status(200).send({
+        message: "Tasks fetched with sucess.", 
+        data: result
+      });
+    } catch (error) {
+      res.status(500).send(`Internal server error: ${error.message}`);
     }
   }
 
   static async updateProjectById(req, res) {
     try {
       const { id } = req.params;
-      const { name, description } = req.body;
 
-      if (!id || !name || !description) {
-        return res.status(400).send("Id, Name and Description are required.");
+      if (
+        !req.body.name ||
+        !req.body.description
+      ) {
+        return res.status(400).send("Name and description are required.");
       }
 
-      const result = await ProjectSchema.updateById({ id, name, description });
+      const result = await ProjectSchema.updateById({ ...req.body, id });
 
       res.status(200).send({
         message: "Project updated with sucess.", 
         data: result
       });
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).send(`Internal server error: ${error.message}`);
     }
   }
 
@@ -87,7 +127,7 @@ class ProjectController {
         data: []
       });
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).send(`Internal server error: ${error.message}`);
     }
   }
 }
