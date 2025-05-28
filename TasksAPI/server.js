@@ -14,4 +14,5 @@ app.listen(port, () => {
   console.log(`listening on https: http://localhost:${port}`);  
 });
 
+export default app;
 

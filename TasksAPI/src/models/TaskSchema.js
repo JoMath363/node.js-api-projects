@@ -31,6 +31,39 @@ class TaskSchema {
     return data.rows;
   }
 
+  static async getOverdue() {
+    const data = await pool.query(
+      `
+      SELECT * FROM tasks
+      Where due_date < CURRENT_DATE()
+      `,
+    );
+
+    return data.rows;
+  }
+
+  static async getToday() {
+    const data = await pool.query(
+      `
+      SELECT * FROM tasks
+      WHERE due_date >= CURRENT_DATE
+      AND due_date < CURRENT_DATE + INTERVAL '1 day'
+      `,
+    );
+
+    return data.rows;
+  }
+
+  static async getByFilter({ status, priority }) {
+    return await pool.query(
+      `
+      SELECT * FROM tasks 
+      WHERE status = $1 OR priority = $2
+      `,
+      [status,  priority]
+    );
+  }
+
   static async getById({ id }) {
     return await pool.query(
       `
@@ -55,6 +88,20 @@ class TaskSchema {
       RETURNING *
       `,
       [projectId, title, description, status, priority, dueDate, id]
+    );
+
+    return data.rows;
+  }
+
+  static async updateStatusById({ id, status }) {
+    const data = await pool.query(
+      `
+      UPDATE tasks 
+      SET status = $1,
+      WHERE id = $2 
+      RETURNING *
+      `,
+      [status, id]
     );
 
     return data.rows;

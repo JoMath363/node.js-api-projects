@@ -14,7 +14,7 @@ class ProjectSchema {
       [name, description]
     );
 
-    return data.rows;
+    return data.rows[0];
   }
 
   static async getAll() {
@@ -50,13 +50,15 @@ class ProjectSchema {
   }
 
   static async getById({ id }) {
-    return await pool.query(
+    const data = await pool.query(
       `
       SELECT * FROM projects 
       WHERE id = $1;
       `,
       [id]
     );
+
+    return data.rows[0];
   }
 
   static async getTasks({ id }) {
@@ -82,7 +84,7 @@ class ProjectSchema {
       [name, description, id]
     );
 
-    return data.rows;
+    return data.rows[0];
   }
 
   static async deleteById({ id }) {

@@ -38,6 +38,45 @@ class TaskController {
     }
   }
 
+  static async getOverdueTasks(req, res) {
+    try {
+      const result = await TaskSchema.getOverdue();
+
+      res.status(200).send({
+        message: "Tasks fetched with sucess.", 
+        data: result
+      });
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  }
+
+  static async getTodayTasks(req, res) {
+    try {
+      const result = await TaskSchema.getToday();
+
+      res.status(200).send({
+        message: "Tasks fetched with sucess.", 
+        data: result
+      });
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  }
+
+  static async getTasksByFilter(req, res) {
+    try {
+      const result = await TaskSchema.getByFilter();
+
+      res.status(200).send({
+        message: "Tasks fetched with sucess.", 
+        data: result
+      });
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  }
+
   static async getTaskById(req, res) {
     try {
       const { id } = req.params;
@@ -65,13 +104,34 @@ class TaskController {
         !req.body.priority ||
         !req.body.dueDate
       ) {
-        return res.status(400).send("Name and description are required.");
+        return res.status(400).send("Required field missing.");
       }
 
       const result = await TaskSchema.updateById({ ...req.body, id });
 
       res.status(200).send({
         message: "Task updated with sucess.", 
+        data: result
+      });
+    } catch (error) {
+      res.status(500).send(`Internal server error: ${error.message}`);
+    }
+  }
+
+  static async updateTaskStatusById(req, res) {
+    try {
+      const { id } = req.params;
+
+      if (
+        !req.body.status
+      ) {
+        return res.status(400).send("Required field missing.");
+      }
+
+      const result = await TaskSchema.updateStatusById({ ...req.body, id });
+
+      res.status(200).send({
+        message: "Task status updated with sucess.", 
         data: result
       });
     } catch (error) {
