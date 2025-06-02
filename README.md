@@ -21,6 +21,12 @@ This repository contains various projects created to study API development using
    - Associations
    - Custom Query Methods
 
+3. **Tasks API**
+   - Postgres
+   - SQL
+   - Jest
+   - Integratation Testing
+
 ## How to Run
 1. Clone the repository:
    ```sh
